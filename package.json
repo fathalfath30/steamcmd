@@ -1,0 +1,43 @@
+{
+    "name": "steamcmd",
+    "version": "1.0.0",
+    "repository": "git@github.com:fathalfath30/steamcmd.git",
+    "author": "fathalfath30 <fathalfath30@gmail.com>",
+    "license": "MIT",
+    "engines": {
+      "npm": "please-use-yarn",
+      "yarn": ">= 1.19.1",
+      "node": ">= 20.9.0"
+    },
+    "devDependencies": {
+      "@commitlint/cli": "^12.1.1",
+      "@commitlint/config-conventional": "^12.1.1",
+      "commitizen": "^4.2.3",
+      "custom-cz-conventional-changelog-for-jira": "^0.0.0-semantically-released",
+      "cz-conventional-changelog": "^3.3.0",
+      "husky": "^6.0.0",
+      "nodemon": "2.0.7",
+      "pre-commit": "^1.2.2"
+    },
+    "dependencies": {},
+    "config": {
+      "commitizen": {
+        "path": "./node_modules/custom-cz-conventional-changelog-for-jira",
+        "jiraOptional": true
+      },
+      "docker": {
+        "file": "./Dockerfile",
+        "compose": "./docker-compose.yaml"
+      }
+    },
+    "scripts": {
+      "git:no-ssl": "git -c http.sslVerify=false",
+      "git:submodule:pull":"git submodule foreach git pull origin master",
+      "server:start": "cd server-data && ../server/FXServer.exe +exec server.cfg",
+      "docker:windows:build": "docker build --file=%npm_package_config_docker_file% --tag=registry.gitlab.com/josgc1/fivem/%npm_package_name%:%npm_package_version% ."
+    },
+    "pre-commit": {
+      "run": []
+    }
+  }
+  
