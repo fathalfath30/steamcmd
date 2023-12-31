@@ -5,7 +5,6 @@
     "author": "fathalfath30 <fathalfath30@gmail.com>",
     "license": "MIT",
     "engines": {
-      "npm": "please-use-yarn",
       "yarn": ">= 1.19.1",
       "node": ">= 20.9.0"
     },
@@ -27,14 +26,23 @@
       },
       "docker": {
         "file": "./Dockerfile",
-        "compose": "./docker-compose.yaml"
+        "compose": "./docker-compose.yaml",
+        "tag": "fathalfath30/steamcmd",
+        "version": "latest",
+        "user": {
+            "id": "2300",
+            "name": "steamcmd"
+        },
+        "group": {
+            "id": "2300",
+            "name": "steamcmd"
+        }
       }
     },
     "scripts": {
       "git:no-ssl": "git -c http.sslVerify=false",
       "git:submodule:pull":"git submodule foreach git pull origin master",
-      "server:start": "cd server-data && ../server/FXServer.exe +exec server.cfg",
-      "docker:windows:build": "docker build --file=%npm_package_config_docker_file% --tag=registry.gitlab.com/josgc1/fivem/%npm_package_name%:%npm_package_version% ."
+      "docker:windows:build": "docker build --build-arg=\"USER_ID=%npm_package_config_docker_user_id%\" --build-arg=\"USER_NAME=%npm_package_config_docker_user_name%\" --build-arg=\"GROUP_ID=%npm_package_config_docker_group_id%\" --build-arg=\"GROUP_NAME=%npm_package_config_docker_group_name%\" --file=\"%npm_package_config_docker_file%\" --tag=\"%npm_package_config_docker_tag%:%npm_package_config_docker_version%\" ."
     },
     "pre-commit": {
       "run": []
