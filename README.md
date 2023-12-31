@@ -58,9 +58,7 @@ or if you wanted to build using yarn (i recommend you to use this, so you don't 
 
 ```json
 {
-    ...
     "config": {
-      ...
       "docker": {
         "file": "./Dockerfile",
         "compose": "./docker-compose.yaml",
@@ -75,8 +73,7 @@ or if you wanted to build using yarn (i recommend you to use this, so you don't 
             "name": "steamcmd"
         }
       }
-    },
-    ...
+    }
 }
 ```
 
